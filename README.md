@@ -1,6 +1,8 @@
 # E-commerce-user-behavior-analysis-SQL-
 Developed a PostgreSQL-based summary using CTEs to analyze e-commerce behavior providing data driven recommendations 
 
+Codes are provided in the SQL codes folder
+
 This project uses a Kaggle dataset to simulate a real-world e-commerce environment. The goal was to move beyond basic reporting and provide actionable recommendations to answer critical business questions, such as:
 
 * Which marketing channels are underperforming despite high traffic?
