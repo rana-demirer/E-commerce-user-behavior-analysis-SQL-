@@ -1,0 +1,28 @@
+--Traffic, Conversion, and user engagement metrics
+WITH
+traffic_metrics AS ( SELECT traffic_source, COUNT(session_id) AS total_sessions, 
+ROUND(AVG(pages_viewed)::NUMERIC, 2) AS avg_pages_viewed, 
+ROUND(AVG(time_on_site_minutes)::NUMERIC, 2) AS avg_time_on_site,
+SUM(added_to_cart) AS total_add_to_cart, SUM(purchased) AS total_purchases, SUM(order_value_usd) AS total_revenue,
+ROUND((SUM(purchased)::NUMERIC / NULLIF(COUNT(session_id), 0)) * 100, 2) AS conv_rate_pct
+    FROM "userr behaviour sessions"
+    GROUP BY 1
+),
+
+--Primary Device per Source
+device_preference AS (
+    SELECT DISTINCT ON (traffic_source) traffic_source, device_type AS primary_device
+    FROM (
+        SELECT traffic_source, device_type, COUNT(*) as cnt
+        FROM "userr behaviour sessions"
+        GROUP BY 1, 2
+    ) sub
+    
+    ORDER BY traffic_source, cnt DESC
+)
+
+-- FINAL MASTER JOIN
+SELECT t.traffic_source, t.total_sessions, t.total_purchases, t.total_revenue, t.conv_rate_pct, t.avg_pages_viewed, t.avg_time_on_site, d.primary_device
+FROM traffic_metrics t
+LEFT JOIN device_preference d ON t.traffic_source = d.traffic_source
+ORDER BY t.total_revenue DESC;
