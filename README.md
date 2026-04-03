@@ -1,7 +1,7 @@
 # E-commerce-user-behavior-analysis-SQL-
 Developed a PostgreSQL-based summary using CTEs, Joins and aggregations to analyze e-commerce behavior providing data driven recommendations 
 
-***! ! ! Please review: Codes are provided in the [SQL Codes](https://github.com/developerRD/E-commerce-user-behavior-analysis-SQL-/blob/main/SQL%20codes) folder demonstrating my knowledge of using CTEs, performing aggregations, grouping data, and using joins, finally combining CTEs into a single master summary table as shown below.***
+***! ! ! Please review: Codes are provided in the [SQL Codes](https://github.com/developerRD/E-commerce-user-behavior-analysis-SQL-/blob/main/SQL%20codes) folder
 
 This project uses a Kaggle dataset to simulate a real-world e-commerce environment. The goal was to move beyond basic reporting and provide actionable recommendations to answer critical business questions, such as:
 
